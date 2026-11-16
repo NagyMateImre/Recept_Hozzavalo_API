@@ -155,6 +155,18 @@
         }
       }
     },
+    "/api/Hozzavalo/GetAllRecords": {
+      "get": {
+        "tags": [
+          "Hozzavalo"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Szakacs/GetNameAndEmailById": {
       "get": {
         "tags": [
@@ -182,6 +194,32 @@
       }
     },
     "/api/Szakacs/GetNameAndInformations": {
+      "get": {
+        "tags": [
+          "Szakacs"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Szakacs/GetRecordsBySzakacsID": {
       "get": {
         "tags": [
           "Szakacs"

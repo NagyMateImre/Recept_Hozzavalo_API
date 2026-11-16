@@ -158,5 +158,24 @@ namespace ReceptAPI.Controllers
             connection.Close();
             return new { result = "Sikeres Törlés"};
         }
+
+        [HttpGet("GetAllRecords")]
+
+        public object GetNumberOfRecord()
+        {
+            var connection = new MySqlConnection(ConnectionString);
+
+            connection.Open();
+            int Records = 0;
+            var sql = @"SELECT count(*) FROM hozzavalo";
+
+            var cmd = new MySqlCommand(sql, connection);
+
+            var number = cmd.ExecuteScalar();
+            Records = Convert.ToInt32(number);
+
+            connection.Close();
+            return new { result = "Sikeres Lekérés", Records };
+        }
     }
 }

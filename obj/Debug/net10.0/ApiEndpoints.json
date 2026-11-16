@@ -27,6 +27,16 @@
   },
   {
     "ContainingType": "ReceptAPI.Controllers.HozzavaloController",
+    "Method": "GetNumberOfRecord",
+    "RelativePath": "api/Hozzavalo/GetAllRecords",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ReceptAPI.Controllers.HozzavaloController",
     "Method": "GetById",
     "RelativePath": "api/Hozzavalo/GetById",
     "HttpMethod": "GET",
@@ -98,6 +108,22 @@
     "ContainingType": "ReceptAPI.Controllers.SzakacsController",
     "Method": "GetNameAndInformations",
     "RelativePath": "api/Szakacs/GetNameAndInformations",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ReceptAPI.Controllers.SzakacsController",
+    "Method": "GetRecords",
+    "RelativePath": "api/Szakacs/GetRecordsBySzakacsID",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

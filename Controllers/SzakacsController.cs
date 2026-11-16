@@ -66,5 +66,26 @@ namespace ReceptAPI.Controllers
             connection.Clone();
             return new { result = "Sikeres Lekérés", name, informations };
         }
+
+        [HttpGet("GetRecordsBySzakacsID")]
+
+        public object GetRecords(int id)
+        {
+            var connection = new MySqlConnection(ConnectionString);
+            int Records = 0;
+            connection.Open();
+
+            var sql = @"SELECT count(*) FROM `szakacs` INNER JOIN `hozzavalo` ON hozzavalo.szakacsId = szakacs.id WHERE szakacs.id = 2;";
+
+            var cmd = new MySqlCommand(sql, connection);
+
+            cmd.Parameters.AddWithValue("@id", id);
+
+            var number = cmd.ExecuteScalar();
+            Records = Convert.ToInt32(number);
+
+            connection.Close();
+            return new { result = "Sikeres Lekérés", Records};
+        }
     }
 }
