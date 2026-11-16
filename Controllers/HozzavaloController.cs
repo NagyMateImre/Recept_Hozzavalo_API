@@ -49,6 +49,45 @@ namespace ReceptAPI.Controllers
             return hozzavalo;
         }
 
+        [HttpGet("GetById")]
+
+        public object GetById(int id)
+        {
+            var connection = new MySqlConnection(ConnectionString);
+
+            connection.Open();
+
+            var sql = @"SELECT * FROM hozzavalo WHERE id = @id";
+
+            var cmd = new MySqlCommand(sql, connection);
+
+            cmd.Parameters.AddWithValue("@id", id);
+            var reader = cmd.ExecuteReader();
+            object? data = null;
+
+            while (reader.Read())
+            {
+                data = new Hozzavalok()
+                {
+                    id = reader.GetInt32(0),
+                    IngredientName = reader.GetString(1),
+                    Quantity = reader.GetString(2),
+                    Description = reader.GetString(3),
+                    AddedTime = reader.GetDateTime(4),
+                    UpdateTime = reader.GetDateTime(5),
+                    szakcsId = reader.GetInt32(6)
+                };
+
+                if(data != null)
+                {   
+                    return data;
+                }
+            }
+
+            connection.Close();
+            return data;
+        }
+
         [HttpPost("Post")]
 
         public object Post([FromBody]AddNewHozzavalo addNewHozzavalo)
