@@ -138,5 +138,25 @@ namespace ReceptAPI.Controllers
             connection.Close();
             return new { result = "Sikeres változtatás"};
         }
+
+        [HttpDelete("Delete")]
+
+        public object Delete(int id)
+        {
+            var connection = new MySqlConnection(ConnectionString);
+
+            connection.Open();
+
+            var sql = @"DELETE FROM `hozzavalo` WHERE id = @id";
+
+            var cmd = new MySqlCommand(sql, connection);
+
+            cmd.Parameters.AddWithValue("@id",id);
+
+            cmd.ExecuteScalar();
+
+            connection.Close();
+            return new { result = "Sikeres Törlés"};
+        }
     }
 }
