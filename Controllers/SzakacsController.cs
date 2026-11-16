@@ -38,5 +38,33 @@ namespace ReceptAPI.Controllers
             connection.Close();
             return data;
         }
+
+        [HttpGet("GetNameAndInformations")]
+
+        public object GetNameAndInformations(int id)
+        {
+            List<object> informations = new List<object>();
+
+            var connection = new MySqlConnection(ConnectionString);
+            string ingredientName,quantity;
+            connection.Open();
+
+            var sql = @"SELECT `name`, hozzavalo.ingredientName, hozzavalo.quantity FROM `szakacs` INNER JOIN hozzavalo ON hozzavalo.szakacsId = szakacs.id WHERE szakacs.id = @id;";
+
+            var cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("@id", id);
+            var reader = cmd.ExecuteReader();
+            string name = "";
+            while (reader.Read())
+            {
+                name = reader.GetString(0);
+                ingredientName = reader.GetString("ingredientName");
+                quantity = reader.GetString("quantity");
+                informations.Add(new { ingredientName,quantity});
+            }
+
+            connection.Clone();
+            return new { result = "Sikeres Lekérés", name, informations };
+        }
     }
 }
