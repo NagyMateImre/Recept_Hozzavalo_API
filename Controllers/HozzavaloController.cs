@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using MySqlConnector;
 using ReceptAPI.Models;
+using ReceptAPI.Models.Dto;
+using System.ComponentModel;
 
 namespace ReceptAPI.Controllers
 {
@@ -45,6 +47,32 @@ namespace ReceptAPI.Controllers
 
             connection.Close();
             return hozzavalo;
+        }
+
+        [HttpPost("Post")]
+
+        public object Post([FromBody]AddNewHozzavalo addNewHozzavalo)
+        {
+            var connection = new MySqlConnection(ConnectionString);
+
+            connection.Open();
+
+            var sql = @"INSERT INTO `hozzavalo`(`ingredientName`, `quantity`, `description`, `addedTime`, `updatetime`, `szakacsId`) VALUES (@ingredientName,@quantity,@description,@addedTime,@updatetime,@szakacsId)";
+
+            var cmd = new MySqlCommand(sql, connection);
+
+            cmd.Parameters.AddWithValue("@ingredientName", addNewHozzavalo.IngredientName);
+            cmd.Parameters.AddWithValue("@quantity", addNewHozzavalo.Quantity);
+            cmd.Parameters.AddWithValue("@description", addNewHozzavalo.Description);
+            cmd.Parameters.AddWithValue("@addedTime", DateTime.Now);
+            cmd.Parameters.AddWithValue("@updateTime", DateTime.Now);
+            cmd.Parameters.AddWithValue("@szakacsId", addNewHozzavalo.szakcsId);
+
+            cmd.ExecuteNonQuery();
+
+            connection.Clone();
+
+            return new { result = "Sikeres Felvétel"};
         }
     }
 }

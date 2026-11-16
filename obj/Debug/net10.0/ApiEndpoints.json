@@ -8,5 +8,21 @@
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ReceptAPI.Controllers.HozzavaloController",
+    "Method": "Post",
+    "RelativePath": "api/Hozzavalo/Post",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addNewHozzavalo",
+        "Type": "ReceptAPI.Models.Dto.AddNewHozzavalo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
