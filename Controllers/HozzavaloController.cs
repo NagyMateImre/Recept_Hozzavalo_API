@@ -113,5 +113,30 @@ namespace ReceptAPI.Controllers
 
             return new { result = "Sikeres Felvétel"};
         }
+
+        [HttpPut("Put")]
+
+        public object Put(int id,UpdateHozzavalo updateHozzavalo)
+        {
+            var connection = new MySqlConnection(ConnectionString);
+
+            connection.Open();
+
+            var sql = @"UPDATE `hozzavalo` SET `ingredientName`='@ingredientName,`quantity`=@quantity,`description`=@description,`updatetime`=@updatetime,`szakacsId`=@szakacsId WHERE `id` = @id";
+
+            var cmd = new MySqlCommand(sql, connection);
+
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@ingredientName", updateHozzavalo.IngredientName);
+            cmd.Parameters.AddWithValue("@quantity", updateHozzavalo.Quantity);
+            cmd.Parameters.AddWithValue("@description", updateHozzavalo.Description);
+            cmd.Parameters.AddWithValue("@updatetime", DateTime.Now);
+            cmd.Parameters.AddWithValue("@szakacsId", updateHozzavalo.szakcsId);
+
+            cmd.ExecuteScalar();
+
+            connection.Close();
+            return new { result = "Sikeres változtatás"};
+        }
     }
 }
