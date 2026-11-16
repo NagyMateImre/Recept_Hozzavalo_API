@@ -75,7 +75,7 @@ namespace ReceptAPI.Controllers
             int Records = 0;
             connection.Open();
 
-            var sql = @"SELECT count(*) FROM `szakacs` INNER JOIN `hozzavalo` ON hozzavalo.szakacsId = szakacs.id WHERE szakacs.id = 2;";
+            var sql = @"SELECT count(*) FROM `szakacs` INNER JOIN `hozzavalo` ON hozzavalo.szakacsId = szakacs.id WHERE szakacs.id = @id;";
 
             var cmd = new MySqlCommand(sql, connection);
 

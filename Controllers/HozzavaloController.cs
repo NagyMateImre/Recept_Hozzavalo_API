@@ -122,7 +122,7 @@ namespace ReceptAPI.Controllers
 
             connection.Open();
 
-            var sql = @"UPDATE `hozzavalo` SET `ingredientName`='@ingredientName,`quantity`=@quantity,`description`=@description,`updatetime`=@updatetime,`szakacsId`=@szakacsId WHERE `id` = @id";
+            var sql = @"UPDATE `hozzavalo` SET `ingredientName`=@ingredientName,`quantity`=@quantity,`description`=@description,`updatetime`=@updatetime,`szakacsId`=@szakacsId WHERE `id` = @id";
 
             var cmd = new MySqlCommand(sql, connection);
 
