@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "ContainingType": "ReceptAPI.Controllers.HozzavaloController",
+    "Method": "Get",
+    "RelativePath": "api/Hozzavalo/Get",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

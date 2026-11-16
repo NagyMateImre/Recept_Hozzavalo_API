@@ -12,5 +12,23 @@
       "url": "http://localhost:5012"
     }
   ],
-  "paths": { }
+  "paths": {
+    "/api/Hozzavalo/Get": {
+      "get": {
+        "tags": [
+          "Hozzavalo"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Hozzavalo"
+    }
+  ]
 }

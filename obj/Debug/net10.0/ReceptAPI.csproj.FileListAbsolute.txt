@@ -34,3 +34,4 @@ C:\Users\NagyMI\source\repos\Recept\ReceptAPI\obj\Debug\net10.0\refint\ReceptAPI
 C:\Users\NagyMI\source\repos\Recept\ReceptAPI\obj\Debug\net10.0\ReceptAPI.pdb
 C:\Users\NagyMI\source\repos\Recept\ReceptAPI\obj\Debug\net10.0\ReceptAPI.genruntimeconfig.cache
 C:\Users\NagyMI\source\repos\Recept\ReceptAPI\obj\Debug\net10.0\ref\ReceptAPI.dll
+C:\Users\NagyMI\source\repos\Recept\ReceptAPI\obj\Debug\net10.0\ReceptAPI.sourcelink.json
